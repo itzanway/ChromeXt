@@ -1,0 +1,67 @@
+{
+    "manifest_version": 3,
+    "name": "YouTube™ User Information slide",
+    "version": "1.8.14",
+    "description": "Displays a rating bar (likes/dislikes) on the bottom of every YouTube™ video thumbnail.",
+    "author": "Amar Kale , Anway Durge , Anirudh Agarwal",
+    "icons": {
+      "16": "icons/icon-16.png",
+      "32": "icons/icon-32.png",
+      "48": "icons/icon-48.png",
+      "128": "icons/icon-128.png"
+    },
+    "action": {
+      "default_icon": "icons/icon-128.png",
+      "default_title": "Settings",
+      "default_popup": "options.html"
+    },
+    "options_ui": {
+      "page": "options.html",
+      "browser_style": false
+    },
+    "background": {
+      "service_worker": "background.js"
+    },
+    "content_scripts": [
+      {
+        "matches": [
+          "*://*.youtube.com/*"
+        ],
+        "js": [
+          "lib/jquery-3.6.1.min.js",
+          "content-script.js"
+        ],
+        "run_at": "document_end"
+      }
+    ],
+    "permissions": [
+      "scripting",
+      "storage"
+    ],
+    "host_permissions": [
+      "*://*.youtube.com/*",
+      "*://*.returnyoutubedislikeapi.com/*"
+    ],
+    "web_accessible_resources": [
+      {
+        "resources": [
+          "css/bar-blue-gray.css",
+          "css/bar-blue-gray-video-page.css",
+          "css/bar-bottom-separator.css",
+          "css/bar-bottom-tooltip.css",
+          "css/bar-bottom.css",
+          "css/bar-green-red.css",
+          "css/bar-green-red-video-page.css",
+          "css/bar-tooltip.css",
+          "css/bar-top-separator.css",
+          "css/bar-top-tooltip.css",
+          "css/bar-top.css",
+          "css/bar.css"
+        ],
+        "matches": [
+          "*://*.youtube.com/*"
+        ],
+        "extension_ids": []
+      }
+    ]
+  }
